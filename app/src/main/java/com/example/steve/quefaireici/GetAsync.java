@@ -78,7 +78,7 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
 
     protected void onPostExecute(JSONObject json) {
         try{
-            List listActivite = parse(json);
+            final List listActivite = parse(json);
             String[] values = new String[listActivite.size()];
             for (int i = 0; i < listActivite.size(); i++){
                 Activite a = (Activite)listActivite.get(i);
@@ -93,10 +93,10 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
 
                 @Override
                 public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
-                    System.out.println(position);
                     Intent detailsIntent = new Intent(context, DetailsActivity.class);
                     detailsIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    detailsIntent.putExtra("url", "toto");
+                    Activite ac =(Activite) listActivite.get(position);
+                    detailsIntent.putExtra("url", ac.getDetails() );
                     context.startActivity(detailsIntent);
 
                 }
