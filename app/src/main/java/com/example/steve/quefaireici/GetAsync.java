@@ -29,8 +29,6 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
 
     private ProgressDialog pDialog;
 
-    private ListeActivityFragment.OnItemSelectedListener listener;
-
     private static final String LOGIN_URL = "http://stevevandycke.free.fr/QueFaireIci/activites.json";
 
     private static final String TAG_SUCCESS = "success";
