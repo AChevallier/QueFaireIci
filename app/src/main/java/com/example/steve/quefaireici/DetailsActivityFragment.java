@@ -22,12 +22,12 @@ public class DetailsActivityFragment extends Fragment {
         return view;
     }
 
-    public void setText(String activite) {
+    public void setText(Activite activite) {
         details = (TextView) getView().findViewById(R.id.detailsText);
-        details.setText(activite);
+        details.setText(activite.getDetails());
 
         title = (TextView) getView().findViewById(R.id.textViewTitle);
-        title.setText(activite);
+        title.setText(activite.getTitre());
     }
 
 }

@@ -87,15 +87,26 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
             listView.setClickable(true);
             listView.setAdapter(adapter);
             final ListView finalList = listView;
+
+
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                 @Override
                 public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
-                    Intent detailsIntent = new Intent(context, DetailsActivity.class);
-                    detailsIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     Activite ac =(Activite) listActivite.get(position);
-                    detailsIntent.putExtra("activite", ac );
-                    context.startActivity(detailsIntent);
+                    DetailsActivityFragment fragment = (DetailsActivityFragment) context.getFragmentManager()
+                            .findFragmentById(R.id.detailFragment);
+
+                    if (fragment != null && fragment.isInLayout()) {
+                        fragment.setText(ac);
+                    } else {
+                        Intent detailsIntent = new Intent(context, DetailsActivity.class);
+                        detailsIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        detailsIntent.putExtra("activite", ac);
+                        context.startActivity(detailsIntent);
+                    }
+
+
 
                 }
             });

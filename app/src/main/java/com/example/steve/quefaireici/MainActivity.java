@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
-public class MainActivity extends AppCompatActivity implements ListeActivityFragment.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity implements ListeActivityFrag
 
     }
 
-    @Override
+/*    @Override
     public void onRssItemSelected(String link) {
         System.out.println("&&&&&&&&&&&&&"+link);
         DetailsActivityFragment fragment = (DetailsActivityFragment) getFragmentManager()
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements ListeActivityFrag
             startActivity(intent);
 
         }
-    }
+    }*/
 }
 
 

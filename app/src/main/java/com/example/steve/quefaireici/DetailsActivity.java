@@ -1,6 +1,7 @@
 package com.example.steve.quefaireici;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -15,21 +16,21 @@ public class DetailsActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-// Need to check if Activity has been switched to landscape mode
-// If yes, finished and go back to the start Activity
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             finish();
             return;
         }
         setContentView(R.layout.activity_details);
         Bundle extras = getIntent().getExtras();
+
         if (extras != null) {
+
             Activite s =(Activite) extras.getSerializable(EXTRA_URL);
             TextView details = (TextView) findViewById(R.id.detailsText);
             details.setText(s.getDetails());
 
             TextView title = (TextView) findViewById(R.id.textViewTitle);
-            details.setText(s.getTitre());
+            title.setText(s.getTitre());
         }
     }
 
