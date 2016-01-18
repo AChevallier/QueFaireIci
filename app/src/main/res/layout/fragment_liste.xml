@@ -1,16 +1,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <EditText android:id="@+id/inputSearch"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="47dp"
+        android:gravity="center_vertical"
         android:hint="Rechercher une activité.."
-        android:inputType="textVisiblePassword"/>
+        android:inputType="textVisiblePassword"
+        android:background="#FFFF"
+        android:padding="7dp"/>
+
+
             <ListView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/listView"
                 android:layout_gravity="center_horizontal" />
+
 </LinearLayout>
