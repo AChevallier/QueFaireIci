@@ -3,18 +3,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-
-    <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView1"
-        android:layout_width="match_parent"
+    <EditText android:id="@+id/inputSearch"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_below="@+id/textView2"
-        android:background="@color/Gris"
-        android:imeOptions="actionNext"
-        android:inputType="textPersonName"
-        android:ems="10" />
+        android:hint="Rechercher une activité.."
+        android:inputType="textVisiblePassword"/>
             <ListView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

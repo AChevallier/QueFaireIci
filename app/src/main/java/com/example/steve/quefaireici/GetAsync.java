@@ -5,10 +5,13 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -35,6 +38,9 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
     private static final String TAG_MESSAGE = "message";
 
     private Activity context;
+
+    // Search EditText
+    EditText inputSearch;
 
     public GetAsync(Activity context){
         this.context = context;
@@ -87,6 +93,7 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
             listView.setClickable(true);
             listView.setAdapter(adapter);
             final ListView finalList = listView;
+            final ArrayAdapter<String> adapterFinal = adapter;
 
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -110,6 +117,31 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
 
                 }
             });
+
+
+            inputSearch = (EditText) context.findViewById(R.id.inputSearch);
+            inputSearch.addTextChangedListener(new TextWatcher() {
+
+                @Override
+                public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
+                    // When user changed the Text
+                    adapterFinal.getFilter().filter(cs);
+                }
+
+                @Override
+                public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
+                                              int arg3) {
+                    // TODO Auto-generated method stub
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable arg0) {
+                    // TODO Auto-generated method stub
+                }
+            });
+
+
         }catch(Exception e){
             System.out.println(e);
         }
