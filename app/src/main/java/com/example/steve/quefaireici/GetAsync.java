@@ -89,7 +89,7 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
                 values[i] = a.getTitre();
             }
             final ListView listView = (ListView)context.findViewById(R.id.listView);
-            ArrayAdapter< String> adapter = new ArrayAdapter< String>(context,android.R.layout.simple_list_item_1, values);
+            final ArrayAdapter< String> adapter = new ArrayAdapter< String>(context,android.R.layout.simple_list_item_1, values);
             listView.setClickable(true);
             listView.setAdapter(adapter);
             final ListView finalList = listView;
@@ -100,6 +100,7 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
 
                 @Override
                 public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
+                    System.out.println(adapter.getItem(position));
                     Activite ac =(Activite) listActivite.get(position);
                     DetailsActivityFragment fragment = (DetailsActivityFragment) context.getFragmentManager()
                             .findFragmentById(R.id.detailFragment);
