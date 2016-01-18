@@ -9,7 +9,7 @@ import android.widget.TextView;
  * Created by Steve on 05/01/2016.
  */
 public class DetailsActivity extends Activity {
-    public static final String EXTRA_URL = "url";
+    public static final String EXTRA_URL = "activite";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +24,12 @@ public class DetailsActivity extends Activity {
         setContentView(R.layout.activity_details);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            String s = extras.getString(EXTRA_URL);
-            TextView view = (TextView) findViewById(R.id.detailsText);
-            view.setText(s);
+            Activite s =(Activite) extras.getSerializable(EXTRA_URL);
+            TextView details = (TextView) findViewById(R.id.detailsText);
+            details.setText(s.getDetails());
+
+            TextView title = (TextView) findViewById(R.id.textViewTitle);
+            details.setText(s.getTitre());
         }
     }
 

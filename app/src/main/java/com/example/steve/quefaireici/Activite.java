@@ -1,9 +1,11 @@
 package com.example.steve.quefaireici;
 
+import java.io.Serializable;
+
 /**
  * Created by alexandre on 12/01/16.
  */
-public class Activite {
+public class Activite implements Serializable{
     public void setId(int id) {
         this.id = id;
     }

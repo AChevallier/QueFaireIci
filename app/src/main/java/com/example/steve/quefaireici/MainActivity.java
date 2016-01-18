@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements ListeActivityFrag
 
     @Override
     public void onRssItemSelected(String link) {
+        System.out.println("&&&&&&&&&&&&&"+link);
         DetailsActivityFragment fragment = (DetailsActivityFragment) getFragmentManager()
                 .findFragmentById(R.id.detailFragment);
         if (fragment != null && fragment.isInLayout()) {

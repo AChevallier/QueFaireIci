@@ -12,6 +12,8 @@ import android.widget.TextView;
  */
 public class DetailsActivityFragment extends Fragment {
 
+    private TextView details;
+    private TextView title;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -20,9 +22,12 @@ public class DetailsActivityFragment extends Fragment {
         return view;
     }
 
-    public void setText(String item) {
-        TextView view = (TextView) getView().findViewById(R.id.detailsText);
-        view.setText(item);
+    public void setText(String activite) {
+        details = (TextView) getView().findViewById(R.id.detailsText);
+        details.setText(activite);
+
+        title = (TextView) getView().findViewById(R.id.textViewTitle);
+        title.setText(activite);
     }
 
 }

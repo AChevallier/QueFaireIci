@@ -29,7 +29,7 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
 
     private ProgressDialog pDialog;
 
-    private static final String LOGIN_URL = "http://stevevandycke.free.fr/QueFaireIci/activites.json";
+    private static final String LOGIN_URL = "http://svandycke.fr/QueFaireIci/activites.json";
 
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
@@ -94,7 +94,7 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
                     Intent detailsIntent = new Intent(context, DetailsActivity.class);
                     detailsIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     Activite ac =(Activite) listActivite.get(position);
-                    detailsIntent.putExtra("url", ac.getDetails() );
+                    detailsIntent.putExtra("activite", ac );
                     context.startActivity(detailsIntent);
 
                 }
