@@ -83,17 +83,18 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
     protected void onPostExecute(JSONObject json) {
         try{
             final List listActivite = parse(json);
-            String[] values = new String[listActivite.size()];
+            List<Activite> values = new ArrayList<Activite>();
             for (int i = 0; i < listActivite.size(); i++){
                 Activite a = (Activite)listActivite.get(i);
-                values[i] = a.getTitre();
+                values.add(a);
             }
             final ListView listView = (ListView)context.findViewById(R.id.listView);
-            final ArrayAdapter< String> adapter = new ArrayAdapter< String>(context,android.R.layout.simple_list_item_1, values);
+            final ArrayAdapter< Activite> adapter = new ActiviteAdapter(context, values);
             listView.setClickable(true);
             listView.setAdapter(adapter);
+            final List<Activite> activities = values;
             final ListView finalList = listView;
-            final ArrayAdapter<String> adapterFinal = adapter;
+            final ArrayAdapter<Activite> adapterFinal = adapter;
 
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -101,7 +102,7 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
                 @Override
                 public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
                     System.out.println(adapter.getItem(position));
-                    Activite ac =(Activite) listActivite.get(position);
+                    Activite ac =(Activite) adapter.getItem(position);
                     DetailsActivityFragment fragment = (DetailsActivityFragment) context.getFragmentManager()
                             .findFragmentById(R.id.detailFragment);
 
@@ -126,7 +127,24 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
                 @Override
                 public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
                     // When user changed the Text
-                    adapterFinal.getFilter().filter(cs);
+                    //adapterFinal.getFilter().filter(cs);
+                    ArrayList<Activite> temp = new ArrayList<Activite>();
+                    int textlength = inputSearch.getText().length();
+                    temp.clear();
+                    for (int i = 0; i < activities.size(); i++)
+                    {
+                        if (textlength <= activities.get(i).getTitre().length())
+                        {
+                            if(inputSearch.getText().toString().equalsIgnoreCase(
+                                    (String)
+                                            activities.get(i).getTitre().subSequence(0,
+                                                    textlength)))
+                            {
+                                temp.add(activities.get(i));
+                            }
+                        }
+                    }
+                    listView.setAdapter(new ActiviteAdapter(context, temp));
                 }
 
                 @Override
