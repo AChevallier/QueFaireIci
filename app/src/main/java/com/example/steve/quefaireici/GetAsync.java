@@ -115,6 +115,13 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
         }
 
 
+<<<<<<< Updated upstream
+=======
+        ListView listView = (ListView)context.findViewById(R.id.listView);
+        //ArrayAdapter< String> adapter = new ArrayAdapter< String>(context,android.R.layout.simple_list_item_1, values);
+        listView.setClickable(true);
+        //listView.setAdapter(adapter);
+>>>>>>> Stashed changes
 
         int success = 0;
         String message = "";
