@@ -1,6 +1,7 @@
 package com.example.steve.quefaireici;
 
 import java.io.Serializable;
+import java.text.Normalizer;
 
 /**
  * Created by alexandre on 12/01/16.
@@ -20,6 +21,9 @@ public class Activite implements Serializable{
 
     public void setTitre(String titre) {
         this.titre = titre;
+        String buildString = titre.replaceAll(" ", "_").toLowerCase();
+        buildString = Normalizer.normalize(buildString, Normalizer.Form.NFD);
+        this.stringId = buildString.replaceAll("[^\\p{ASCII}]", "");
     }
 
     public void setDetails(String details) {
@@ -51,6 +55,12 @@ public class Activite implements Serializable{
     private double latitude;
 
     private String titre;
+
+    public String getStringId() {
+        return stringId;
+    }
+
+    private String stringId;
     private String details;
 
     public Activite(int id, double longtitude, double latitude, String titre, String details){

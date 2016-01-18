@@ -26,11 +26,10 @@ public class DetailsActivity extends Activity {
         if (extras != null) {
 
             Activite s =(Activite) extras.getSerializable(EXTRA_URL);
-            TextView details = (TextView) findViewById(R.id.detailsText);
-            details.setText(s.getDetails());
+            DetailsActivityFragment fragment = (DetailsActivityFragment) getFragmentManager()
+                    .findFragmentById(R.id.detailFragment);
 
-            TextView title = (TextView) findViewById(R.id.textViewTitle);
-            title.setText(s.getTitre());
+            fragment.setText(s);
         }
     }
 

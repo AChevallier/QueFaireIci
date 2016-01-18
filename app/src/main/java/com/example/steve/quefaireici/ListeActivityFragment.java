@@ -19,7 +19,6 @@ import org.json.JSONObject;
  */
 public class ListeActivityFragment extends Fragment {
 
-   //private OnItemSelectedListener listener;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -37,21 +36,6 @@ public class ListeActivityFragment extends Fragment {
                 container, false);
         return view;
     }
-
-/*    public interface OnItemSelectedListener {
-        public void onRssItemSelected(Activite link);
-    }*/
-
-   /* @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        if (activity instanceof OnItemSelectedListener) {
-            listener = (OnItemSelectedListener) activity;
-        } else {
-            throw new ClassCastException(activity.toString()
-                    + " must implemenet MyListFragment.OnItemSelectedListener");
-        }
-    }*/
 
 
 }
