@@ -4,4 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="Gris">#e1e1e1</color>
+    <color name="fond_tres_claire">#fffcf9</color>
+    <color name="fond_clair">#d7d1cb</color>
+    <color name="fond_fonce">#b5ada6</color>
 </resources>
