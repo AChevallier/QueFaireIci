@@ -27,6 +27,22 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.select_dialog_item, arr);
 
     }
+
+/*    @Override
+    public void onRssItemSelected(String link) {
+        System.out.println("&&&&&&&&&&&&&"+link);
+        DetailsActivityFragment fragment = (DetailsActivityFragment) getFragmentManager()
+                .findFragmentById(R.id.detailFragment);
+        if (fragment != null && fragment.isInLayout()) {
+            fragment.setText(link);
+        } else {
+            Intent intent = new Intent(getApplicationContext(),
+                    DetailsActivity.class);
+            intent.putExtra(DetailsActivity.EXTRA_URL, link);
+            startActivity(intent);
+
+        }
+    }*/
 }
 
 

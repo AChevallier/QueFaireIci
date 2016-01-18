@@ -114,12 +114,8 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
                         detailsIntent.putExtra("activite", ac);
                         context.startActivity(detailsIntent);
                     }
-
-
-
                 }
             });
-
 
             inputSearch = (EditText) context.findViewById(R.id.inputSearch);
             inputSearch.addTextChangedListener(new TextWatcher() {
