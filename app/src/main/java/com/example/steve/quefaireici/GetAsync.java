@@ -89,6 +89,9 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
 
     protected void onPostExecute(JSONObject json) {
 
+        swipeRefreshLayout = (SwipeRefreshLayout) context.findViewById(R.id.swiperefresh);
+        //stop loading
+        swipeRefreshLayout.setRefreshing(false);
         //################
         //Parsing json + making object
         //################
@@ -190,7 +193,7 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
             // Swipe refresh
             //--------------------------------------
 
-            swipeRefreshLayout = (SwipeRefreshLayout) context.findViewById(R.id.swiperefresh);
+
             // the refresh listner. this would be called when the layout is pulled down
             swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 
@@ -199,34 +202,12 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
 
                     GetAsync async = new GetAsync(context);
                     async.execute();
-                    handler.post(refreshing);
+
                 }
             });
             // sets the colors used in the refresh animation
             swipeRefreshLayout.setColorSchemeResources(R.color.blue_bright, R.color.green_light,
                     R.color.orange_light, R.color.red_light);
-
-            listView.setOnScrollListener(new AbsListView.OnScrollListener() {
-
-                @Override
-                public void onScrollStateChanged(AbsListView view, int scrollState) {
-                }
-
-                @Override
-                public void onScroll(AbsListView view, int firstVisibleItem,
-                                     int visibleItemCount, int totalItemCount) {
-                    boolean enable = false;
-                    if (listView != null && listView.getChildCount() > 0) {
-                        // check if the first item of the list is visible
-                        boolean firstItemVisible = listView.getFirstVisiblePosition() == 0;
-                        // check if the top of the first item is visible
-                        boolean topOfFirstItemVisible = listView.getChildAt(0).getTop() == 0;
-                        // enabling or disabling the refresh layout
-                        enable = firstItemVisible && topOfFirstItemVisible;
-                    }
-                    swipeRefreshLayout.setEnabled(enable);
-                }
-            });
 
         }catch(Exception e){
             System.out.println(e);
@@ -304,22 +285,4 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
         return al;
     }
 
-    private final Runnable refreshing = new Runnable(){
-        public void run(){
-            try {
-                // TODO : isRefreshing should be attached to your data request status
-                if(swipeRefreshLayout.isRefreshing()){
-                    // re run the verification after 1 second
-                    handler.postDelayed(this, 1000);
-                }else{
-                    // stop the animation after the data is fully loaded
-                    swipeRefreshLayout.setRefreshing(false);
-                    // TODO : update your list with the new data
-                }
-            }
-            catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    };
 }
