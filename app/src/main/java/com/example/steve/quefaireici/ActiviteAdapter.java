@@ -35,6 +35,9 @@ public class ActiviteAdapter extends ArrayAdapter<Activite> {
             convertView = inflater.inflate(R.layout.single_item, null);
             TextView titre= (TextView)convertView.findViewById(R.id.title_single);
             titre.setText(obj.getTitre());
+            TextView ville = (TextView)convertView.findViewById(R.id.villeText);
+            ville.setText(obj.getVille());
+
 
             return convertView;
         }

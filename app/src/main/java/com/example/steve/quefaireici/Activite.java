@@ -56,6 +56,16 @@ public class Activite implements Serializable{
 
     private String titre;
 
+    public String getVille() {
+        return ville;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
+    }
+
+    private String ville;
+
     public String getStringId() {
         return stringId;
     }
@@ -81,6 +91,7 @@ public class Activite implements Serializable{
                 ", longtitude=" + longtitude +
                 ", latitude=" + latitude +
                 ", titre='" + titre + '\'' +
+                ", ville='" + ville + '\'' +
                 ", details='" + details + '\'' +
                 '}';
     }
