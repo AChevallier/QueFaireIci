@@ -135,6 +135,7 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
             //  Search Input
             //################
             inputSearch = (EditText) context.findViewById(R.id.inputSearch);
+            inputSearch.setText("");
             inputSearch.addTextChangedListener(new TextWatcher() {
 
                 @Override
