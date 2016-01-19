@@ -16,9 +16,9 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Small Text"
         android:id="@+id/villeText"
-        android:layout_marginRight="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_alignBaseline="@+id/title_single"
+        android:layout_marginRight="28dp"
+        android:layout_marginEnd="28dp"
+        android:textSize="13sp"
         android:layout_alignBottom="@+id/title_single"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />

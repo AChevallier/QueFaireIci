@@ -131,7 +131,7 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
                     {
                         if (textlength <= activities.get(i).getTitre().length())
                         {
-                            if(activities.get(i).getTitre().toLowerCase().contains(inputSearch.getText()))
+                            if(activities.get(i).getTitre().toLowerCase().contains(inputSearch.getText())|| activities.get(i).getVille().toLowerCase().contains(inputSearch.getText()) )
                             {
                                 temp.add(activities.get(i));
                             }
