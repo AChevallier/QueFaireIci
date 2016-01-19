@@ -20,14 +20,14 @@ public class MainActivity extends AppCompatActivity {
         //################
         //drawer
         //################
-        mDrawerList = (ListView) findViewById(R.id.navList);
+       /* mDrawerList = (ListView) findViewById(R.id.navList);
         addDrawerItems();
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(MainActivity.this, "Time for an upgrade!", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
     }
 
