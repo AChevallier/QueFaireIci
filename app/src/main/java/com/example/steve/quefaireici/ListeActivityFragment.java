@@ -3,6 +3,8 @@ package com.example.steve.quefaireici;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -28,7 +30,10 @@ public class ListeActivityFragment extends Fragment {
 
         GetAsync async = new GetAsync(getActivity());
         async.execute();
+
+
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

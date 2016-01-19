@@ -7,4 +7,9 @@
     <color name="fond_tres_claire">#fffcf9</color>
     <color name="fond_clair">#d7d1cb</color>
     <color name="fond_fonce">#b5ada6</color>
+
+    <color name="blue_bright">#0086ed</color>
+    <color name="orange_light">#ed8600</color>
+    <color name="red_light">#ed0000</color>
+    <color name="green_light">#00bf12</color>
 </resources>
