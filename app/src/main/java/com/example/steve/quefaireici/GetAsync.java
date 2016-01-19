@@ -55,11 +55,11 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
 
     @Override
     protected void onPreExecute() {
-        pDialog = new ProgressDialog(context);
+        /*pDialog = new ProgressDialog(context);
         pDialog.setMessage("Mise à jour...");
         pDialog.setIndeterminate(false);
         pDialog.setCancelable(true);
-        pDialog.show();
+        pDialog.show();*/
     }
 
     @Override
