@@ -45,6 +45,7 @@ public class DetailsActivityFragment extends Fragment {
         image = (ImageView) getView().findViewById(R.id.image);
 
         try{
+            System.out.println(activite.getStringId());
             new LoadImage().execute("http://svandycke.fr/QueFaireIci/images/"+activite.getStringId()+".jpg");
         }
         catch (Exception e){

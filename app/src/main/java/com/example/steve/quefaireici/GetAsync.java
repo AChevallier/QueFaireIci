@@ -144,7 +144,6 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
 
                         @Override
                         public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
-                            System.out.println(finalAdapaterModif.getItem(position));
                             Activite ac = finalAdapaterModif.getItem(position);
                             DetailsActivityFragment fragment = (DetailsActivityFragment) context.getFragmentManager()
                                     .findFragmentById(R.id.detailFragment);

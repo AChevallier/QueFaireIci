@@ -21,9 +21,10 @@ public class Activite implements Serializable{
 
     public void setTitre(String titre) {
         this.titre = titre;
-        String buildString = titre.replaceAll(" ", "_").toLowerCase();
-        buildString = Normalizer.normalize(buildString, Normalizer.Form.NFD);
-        this.stringId = buildString.replaceAll("[^\\p{ASCII}]", "");
+        if(ville != null && stringId == null){
+            this.stringId = createId();
+        }
+
     }
 
     public void setDetails(String details) {
@@ -54,7 +55,7 @@ public class Activite implements Serializable{
     private double longtitude;
     private double latitude;
 
-    private String titre;
+    private String titre = null;
 
     public String getVille() {
         return ville;
@@ -62,15 +63,18 @@ public class Activite implements Serializable{
 
     public void setVille(String ville) {
         this.ville = ville;
+        if(titre != null && stringId == null){
+            this.stringId = createId();
+        }
     }
 
-    private String ville;
+    private String ville = null;
 
     public String getStringId() {
         return stringId;
     }
 
-    private String stringId;
+    private String stringId = null;
     private String details;
 
     public Activite(int id, double longtitude, double latitude, String titre, String details){
@@ -94,5 +98,15 @@ public class Activite implements Serializable{
                 ", ville='" + ville + '\'' +
                 ", details='" + details + '\'' +
                 '}';
+    }
+
+    private String createId(){
+        String villeModif = ville.replaceAll("-| ", "_").toLowerCase();
+        String buildString = titre.replaceAll("-| ", "_").toLowerCase();
+        buildString = Normalizer.normalize(buildString, Normalizer.Form.NFD);
+        villeModif = Normalizer.normalize(villeModif, Normalizer.Form.NFD);
+        buildString =  buildString.replaceAll("[^\\p{ASCII}]", "");
+        villeModif =  villeModif.replaceAll("[^\\p{ASCII}]", "");
+        return villeModif+"_"+buildString;
     }
 }
