@@ -42,6 +42,9 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
     // Search EditText
     EditText inputSearch;
 
+    private ListView mDrawerList;
+    private ArrayAdapter<String> mAdapter;
+
     public GetAsync(Activity context){
         this.context = context;
     }
@@ -81,6 +84,23 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
     }
 
     protected void onPostExecute(JSONObject json) {
+
+        //################
+        //drawer
+        //################
+        mDrawerList = (ListView) context.findViewById(R.id.navList);
+        addDrawerItems();
+        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(context, "Time for an upgrade!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //################
+        //Parsing json + making object
+        //################
+
         try{
             final List listActivite = parse(json);
             List<Activite> values = new ArrayList<Activite>();
@@ -116,7 +136,9 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
                 }
             });
 
-
+            //################
+            //  Search Input
+            //################
             inputSearch = (EditText) context.findViewById(R.id.inputSearch);
             inputSearch.addTextChangedListener(new TextWatcher() {
 
@@ -250,5 +272,12 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
             }
         }
         return al;
+    }
+
+
+    private void addDrawerItems() {
+        String[] osArray = { "Android", "iOS", "Windows", "OS X", "Linux" };
+        mAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, osArray);
+        mDrawerList.setAdapter(mAdapter);
     }
 }

@@ -22,7 +22,6 @@ import org.json.JSONObject;
  */
 public class ListeActivityFragment extends Fragment {
 
-
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -39,6 +38,5 @@ public class ListeActivityFragment extends Fragment {
                 container, false);
         return view;
     }
-
 
 }
