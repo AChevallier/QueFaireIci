@@ -93,8 +93,6 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
             listView.setClickable(true);
             listView.setAdapter(adapter);
             final List<Activite> activities = values;
-            final ListView finalList = listView;
-            final ArrayAdapter<Activite> adapterFinal = adapter;
 
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -102,7 +100,7 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
                 @Override
                 public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
                     System.out.println(adapter.getItem(position));
-                    Activite ac =(Activite) adapter.getItem(position);
+                    Activite ac = adapter.getItem(position);
                     DetailsActivityFragment fragment = (DetailsActivityFragment) context.getFragmentManager()
                             .findFragmentById(R.id.detailFragment);
 
@@ -114,8 +112,6 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
                         detailsIntent.putExtra("activite", ac);
                         context.startActivity(detailsIntent);
                     }
-
-
 
                 }
             });
@@ -135,16 +131,36 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
                     {
                         if (textlength <= activities.get(i).getTitre().length())
                         {
-                            if(inputSearch.getText().toString().equalsIgnoreCase(
-                                    (String)
-                                            activities.get(i).getTitre().subSequence(0,
-                                                    textlength)))
+                            if(activities.get(i).getTitre().toLowerCase().contains(inputSearch.getText()))
                             {
                                 temp.add(activities.get(i));
                             }
                         }
                     }
-                    listView.setAdapter(new ActiviteAdapter(context, temp));
+                    ActiviteAdapter adapterModif = new ActiviteAdapter(context, temp);
+                    listView.setAdapter(adapterModif);
+                    final ActiviteAdapter finalAdapaterModif = adapterModif;
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                        @Override
+                        public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
+                            System.out.println(finalAdapaterModif.getItem(position));
+                            Activite ac = finalAdapaterModif.getItem(position);
+                            DetailsActivityFragment fragment = (DetailsActivityFragment) context.getFragmentManager()
+                                    .findFragmentById(R.id.detailFragment);
+
+                            if (fragment != null && fragment.isInLayout()) {
+                                fragment.setText(ac);
+                            } else {
+                                Intent detailsIntent = new Intent(context, DetailsActivity.class);
+                                detailsIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                detailsIntent.putExtra("activite", ac);
+                                context.startActivity(detailsIntent);
+                            }
+
+                        }
+                    });
+
                 }
 
                 @Override

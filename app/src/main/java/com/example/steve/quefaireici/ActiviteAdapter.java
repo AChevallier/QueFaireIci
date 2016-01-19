@@ -38,5 +38,8 @@ public class ActiviteAdapter extends ArrayAdapter<Activite> {
 
             return convertView;
         }
-
+    @Override
+    public Activite getItem(int position) {
+        return arrActivite.get(position);
+    }
     }
