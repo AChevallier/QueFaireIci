@@ -95,8 +95,7 @@
                 android:id="@+id/textView6"
                 android:textAlignment="center"
                 android:layout_weight="1"
-                android:textSize="23dp"
-                android:textStyle="bold" />
+                android:textSize="23dp"/>
         </LinearLayout>
 
 
