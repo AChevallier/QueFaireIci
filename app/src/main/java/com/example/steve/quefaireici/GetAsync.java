@@ -271,6 +271,15 @@ public class GetAsync extends AsyncTask<String, String, JSONObject> {
                             case "ville":
                                 activite.setVille(valueV);
                                 break;
+                            case "horaires":
+                                activite.setHoraires(valueV);
+                                break;
+                            case "tel":
+                                activite.setTel(valueV);
+                                break;
+                            case "adresse":
+                                activite.setAdresse(valueV);
+                                break;
                         }
                     }
                 }

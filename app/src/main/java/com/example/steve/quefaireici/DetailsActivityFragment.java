@@ -2,17 +2,23 @@ package com.example.steve.quefaireici;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -24,7 +30,11 @@ public class DetailsActivityFragment extends Fragment {
 
     private TextView details;
     private TextView title;
+    private TextView adresseTW;
     private ImageView image;
+    private TextView horairesTW;
+    private TextView telTW;
+    private Button buttonMaps;
     Bitmap bitmap;
     ProgressDialog pDialog;
     @Override
@@ -35,13 +45,30 @@ public class DetailsActivityFragment extends Fragment {
         return view;
     }
 
-    public void setText(Activite activite) {
+    public void setText(final Activite activite) {
         details = (TextView) getView().findViewById(R.id.detailsText);
         details.setText(activite.getDetails());
 
         title = (TextView) getView().findViewById(R.id.textViewTitle);
         title.setText(activite.getTitre());
 
+        adresseTW = (TextView) getView().findViewById(R.id.adresseTextView);
+        adresseTW.setText(activite.getAdresse());
+
+        horairesTW = (TextView) getView().findViewById(R.id.horaiesTextview);
+        horairesTW.setText(activite.getHoraires());
+
+        telTW = (TextView) getView().findViewById(R.id.telTextViews);
+        telTW.setText(activite.getTel());
+
+        buttonMaps = (Button) getView().findViewById(R.id.buttonMaps);
+        buttonMaps.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                        Uri.parse("http://maps.google.com/maps?q=loc:"+activite.getLatitude()+","+ activite.getLongtitude()));
+                startActivity(intent);
+            }
+        });
         image = (ImageView) getView().findViewById(R.id.image);
 
         try{

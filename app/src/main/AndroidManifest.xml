@@ -20,6 +20,9 @@
         <activity android:name=".DetailsActivity">
 
         </activity>
+        <activity android:name=".CreditActivity">
+
+        </activity>
 
     </application>
 

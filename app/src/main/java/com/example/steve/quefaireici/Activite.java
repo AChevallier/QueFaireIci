@@ -77,16 +77,39 @@ public class Activite implements Serializable{
     private String stringId = null;
     private String details;
 
-    public Activite(int id, double longtitude, double latitude, String titre, String details){
-        this.id = id;
-        this.longtitude = longtitude;
-        this.titre = titre;
-        this.details = details;
+    public String getHoraires() {
+        return horaires;
     }
+
+    public void setHoraires(String horaires) {
+        this.horaires = horaires;
+    }
+
+    private String horaires;
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    private String tel;
+    private String adresse;
+
+
     public Activite(){
 
     }
-
 
     @Override
     public String toString() {
@@ -96,7 +119,11 @@ public class Activite implements Serializable{
                 ", latitude=" + latitude +
                 ", titre='" + titre + '\'' +
                 ", ville='" + ville + '\'' +
+                ", stringId='" + stringId + '\'' +
                 ", details='" + details + '\'' +
+                ", horaires='" + horaires + '\'' +
+                ", tel='" + tel + '\'' +
+                ", adresse='" + adresse + '\'' +
                 '}';
     }
 

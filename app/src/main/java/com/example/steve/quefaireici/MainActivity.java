@@ -23,13 +23,13 @@ public class MainActivity extends AppCompatActivity {
         //################
         mDrawerList = (ListView) findViewById(R.id.navList);
         addDrawerItems();
+        final Intent credit = new Intent(this, CreditActivity.class);
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
                     case 0:
-                        break;
-                    case 1:
+                        startActivity(credit);
                         break;
                     default:
                         break;
